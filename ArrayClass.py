@@ -29,9 +29,13 @@ Created on Tue Sep 24 13:34:50 2024
             
 """
 
+
+
+
 class Array():
     
     def __init__(self,initial_size):   # arrays have a fixed size 
+        self.initial_size = initial_size
         self.array = [None]*initial_size # define array as list with None initial_size times
         self.amount = 0 # amount of elements in array
         self.initial_type = None # every array contains onyl elements of one data type
@@ -39,7 +43,11 @@ class Array():
 
         
     def insert(self,item): # insert a new element into the array
-        
+    
+        if self.amount == self.initial_size:
+            print("Array is full")
+            return False
+    
         if self.amount == 0: # if no element is yet in the array 
             
             self.initial_type = type(item) # set type of array to type of item
@@ -75,9 +83,26 @@ class Array():
         for i in range(self.amount):
             print(self.array[i])
     
-ar = Array(2)
+    
+    def __str__(self):
+        array_string = "["
+        for i in range(self.amount):
+            if len(array_string)>1:
+                array_string += ", "
+            array_string += str(self.array[i])
+        array_string += "]"
+        return array_string
+    
+    
+    
+    
+    
+    
+    
+ar = Array(3)
 
 ar.insert(2)
-ar.traverse()
+ar.insert(3)
+ar.insert(4)
 ar.insert(10)
-ar.traverse()
+print(ar)
