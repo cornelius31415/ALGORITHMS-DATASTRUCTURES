@@ -95,21 +95,11 @@ class Array():
         for i in range(self.size):                      # go through all elements of array to search item
             element = getattr(self, f"element{i}")      # take elements of array
             if item == element.value:                   # and compare them until right match is found
-                
-                for k in range(i,self.amount-1):        # range goes up to second last index
-                    
-                    # current element value is exchanged for the one
-                    # of the next element's value
-                    current_element = getattr(self, f"element{k}") 
-                    next_element = getattr(self, f"element{k+1}")
-                    current_element.value = next_element.value
-                    
-                # the loop only went up to the second last index
-                # now we need the element of the last index
-                last_element = getattr(self, f"element{self.amount-1}")
-                last_element.value = None               # and set it to None
-                self.amount -= 1                        # finally we decrease the amount of elements
-                                                        # in the array
+                last_element = getattr(self, f"element{self.amount-1}") # get last element of the array
+                element.value = last_element.value      # shift value to the position of element to be kicked out
+                last_element.value = None               # set the value of the last element to None
+                self.amount -= 1                        # finally we decrease the amount of elements in the array
+                                                   
                 
     def traverse(self):
         # go through all elements one by one and print them if
