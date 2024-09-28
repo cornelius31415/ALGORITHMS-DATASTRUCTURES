@@ -21,6 +21,12 @@ Created on Wed Sep 25 11:29:50 2024
 
 """
 
+"""
+    
+                            KOMMENTIEREN !!!!!!
+
+"""
+
 
 # -----------------------------------------------------------------------------
 #                               ARRAY ELEMENTS
@@ -55,7 +61,9 @@ class Array():
             # as elements size-times.
             setattr(self, f"element{i}", ArrayElement(i))
             
-            
+    # -----------------------------------------------------------------------------
+    #                               BASIC OPERATIONS 
+    # -----------------------------------------------------------------------------      
             
     def insert(self,item):
         
@@ -81,11 +89,12 @@ class Array():
         
     def search(self,item):
         
+    
         # go through all elements one by one and compare
         for i in range(self.size):
-            element = getattr(self, f"element{i}")
-            if item == element.value:
-                return element.index
+            element = getattr(self, f"element{i}")      # get element with index i
+            if item == element.value:                   # compare
+                return element.index                    # if correct return index
         
 
     
@@ -99,30 +108,73 @@ class Array():
                 element.value = last_element.value      # shift value to the position of element to be kicked out
                 last_element.value = None               # set the value of the last element to None
                 self.amount -= 1                        # finally we decrease the amount of elements in the array
-                                                   
+     
+
+    def del_index(self,index):
+        
+        element = getattr(self, f"element{index}")                  # get the element with index specified in function
+        last_element = getattr(self, f"element{self.amount-1}")     # get last element of the array
+        element.value = last_element.value                          # delete element by replacing it with last element
+        last_element.value = None                                   # set last element to None
+        self.amount -= 1                                            # and reduce amount of elements in array
+        
+
+                                                  
                 
     def traverse(self):
         # go through all elements one by one and print them if
         # they are not None
-        for i in range(self.size):
+        for i in range(self.size):                                  # go through all elements
             element = getattr(self, f"element{i}")
-            if element.value != None:
-                print(element.value)
+            if element.value != None:                               # check if element is not None
+                print(element.value)                                # print the value of the element
         
 
 
     # get the element with a specified index
     def get(self,index):
         
-        if index < self.size:
+        if index < self.size:                                       # check if index is smaller than size
             element = getattr(self, f"element{index}")
-            return element.value
+            return element.value                                    
         else:
-            raise IndexError("Array is not that big man.")
+            raise IndexError("Array is not that big man.")          # if index out of range spit out Index Error
+            
+            
         
+    # -----------------------------------------------------------------------------
+    #                       MAKING IT LOOK LIKE A LIST
+    # -----------------------------------------------------------------------------
+        
+    def __getitem__(self, index):                                   # function to get item of array with []-formalism
+        
+        if index < 0 or index >= self.size:
+            raise IndexError("Array index out of range man take care yo.")
+        
+        element = getattr(self, f"element{index}")
+                
+        return element.value
 
+    def __setitem__(self,index,value):                              # function to set item of array with []-formalism
+        
+        if self.amount == 0:
+             self.datatype = type(value)
+        
+        if index < 0 or index >= self.size:
+            raise IndexError("Array index out of range man take care yo.")
+            
+        if type(value) != self.datatype:
+            raise TypeError(f"Wrong data type. Array is of type {self.datatype}")
+            
 
-    def __len__(self):
+        
+        element = getattr(self, f"element{index}")
+        element.value = value 
+        
+        pass
+ 
+    
+    def __len__(self):                                              # function to get length of array with len()-function
         return self.amount
     
     
@@ -163,11 +215,17 @@ print(array.get(2))         # get element with index 2
 
 
 print(array)
+print(array[1])
+array[1] = 17
 
-array2 = Array(2)
-array2.insert(array)
-print(array2)
-array2.insert(Array(2))
+print(array[1])
+print(array)
+array.del_index(1)
+print(array)
+# array2 = Array(2)
+# array2.insert(array)
+# print(array2)
+# array2.insert(Array(2))
                 
 # print(len(array))           # print length of array
 # array.delete(2)             # delete element with value 2
