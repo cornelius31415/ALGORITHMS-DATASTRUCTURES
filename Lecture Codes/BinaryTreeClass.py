@@ -50,7 +50,12 @@ class BinaryTree():
         self.root = None                # set root to None in the beginning
         self.nodes = []
     
-    
+        
+    # -----------------------------------------------------------------------------
+    #                               BASIC OPERATIONS
+    # -----------------------------------------------------------------------------
+
+
     def insert(self,key,value):
         
         new_node = Node(key,value)      # create a Node object with key and value
@@ -62,7 +67,7 @@ class BinaryTree():
         
         current = self.root             # start with root node
         
-        while True:                     # while current is not None
+        while current is not None:                     # while current is not None
         
             if key < current.key:
                 if current.left is None:
@@ -79,9 +84,45 @@ class BinaryTree():
                     break
                 else:
                     current = current.right
+                    
+                    
     
+    def search(self,key):                       # search for an element in a binary tree
+                                                # best case O(logn) and worst case O(n)
+        
+        current = self.root                     # set current node to root
+        
+     
+        while current is not None:              # as long as the current node is not None
+            if key == current.key:              # check if key is aligning with key of current node
+                return current.value            # if not then reset the current node to either
+            elif key < current.key:             # the left or the right child
+                current = current.left
+            else:
+                current = current.right
+                
+
+
+      
         
     
+    
+    def delete(self,key):
+        
+        
+        pass
+    
+    
+    def traverse(self):
+        
+        
+        pass
+    
+        
+            
+    # -----------------------------------------------------------------------------
+    #                               SIDE OPERATIONS
+    # -----------------------------------------------------------------------------
     
     
     def get_depth(self):
@@ -134,12 +175,18 @@ class BinaryTree():
                         
                         
             current_level += 1
-
+            
+            tree = []
+            for element in current_level_nodes:
+                tree.append(element.value)
+                
+                
+        return tree
     
-        return current_level_nodes
     
-    
-    
+    # -----------------------------------------------------------------------------
+    #                            MAGIC CLASS FUNCTIONS
+    # -----------------------------------------------------------------------------  
 
     def __str__(self):
         
@@ -164,9 +211,9 @@ class BinaryTree():
 tree = BinaryTree()
 tree.insert(2, "hallo")
 tree.insert(3,"idiot")
-tree.insert(4, "3")
+tree.insert(1, "3")
 print(tree)
-
+print(tree.search(3))
 node = tree.nodes[0]
 print(tree.get_depth())
 

@@ -13,7 +13,7 @@ Created on Wed Sep 25 22:15:04 2024
 
 """
 
-from ArrayClass import Array 
+from Array import Array 
 
 
 class Node():
