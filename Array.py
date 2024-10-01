@@ -234,29 +234,29 @@ class Array():
 #                               TRYING IT OUT
 # -----------------------------------------------------------------------------
        
-array = Array(3)            # create array with 3 spaces for elements
-array.insert(1)             # insert numbers
-array.insert(2)
-array.insert(3)
-# print(array.get(2))         # get element with index 2
+# array = Array(3)            # create array with 3 spaces for elements
+# array.insert(1)             # insert numbers
+# array.insert(2)
+# array.insert(3)
+# # print(array.get(2))         # get element with index 2
 
 
 
-# print(array)
-# print(array[1])
-array[1] = 17
+# # print(array)
+# # print(array[1])
+# array[1] = 17
 
-# print(array[1])
-# print(array)
-array.del_index(1)
-# print(array)
-# print(1 in array)
+# # print(array[1])
+# # print(array)
+# array.del_index(1)
+# # print(array)
+# # print(1 in array)
 
-if 1 in array:
-    print("yay")
+# if 1 in array:
+#     print("yay")
     
-for element in array:
-    print(element)
+# for element in array:
+#     print(element)
 
 # array2 = Array(2)
 # array2.insert(array)
