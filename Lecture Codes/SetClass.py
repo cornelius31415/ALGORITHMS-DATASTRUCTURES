@@ -20,6 +20,8 @@ Created on Mon Sep 30 17:31:16 2024
 
 """
 
+
+
 from Array import Array
 
 
@@ -33,14 +35,43 @@ class Set():
         self.set = Array(10)        # use an array data structure to store elements
         
         
+    # -----------------------------------------------------------------------------
+    #                               BASIC OPERATIONS
+    # -----------------------------------------------------------------------------
     
     def add(self,element):
         
         if element not in self.set:     # check if element is already existent in the set
             self.set.insert(element)    # if not- go ahead and add it to the array
+            
+            
+    def search(self,element):
         
+        for item in self.set:
+            if item == element:
+                return item
+        
+        return "Nope, item does not exist."
+    
+    
+    def delete(self,element):
+        
+        self.set.delete(element)
         
 
+    
+    
+    def traverse(self):
+        
+        for element in self.set:
+            print(element)
+        
+
+        
+        
+    # -----------------------------------------------------------------------------
+    #                         MATHEMATICAL SET OPERATIONS
+    # -----------------------------------------------------------------------------
     
     
     def union(self, other_set):
@@ -97,6 +128,10 @@ class Set():
         return symm_diff
     
     
+    # -----------------------------------------------------------------------------
+    #                               THE MAGIC SECTION
+    # -----------------------------------------------------------------------------
+    
     def __str__(self):
         
         set_string = "{"
@@ -134,6 +169,10 @@ union = set1.union(set2)
 print(union)
 inter = set1.symmetric_difference(set2)
 print(inter)
+print(inter.search(25))
+print(set1)
+set1.delete(2)
+print(set1)
 
 
 
