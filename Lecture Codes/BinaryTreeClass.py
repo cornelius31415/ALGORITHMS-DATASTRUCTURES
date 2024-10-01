@@ -14,6 +14,7 @@ Created on Wed Sep 25 13:54:14 2024
                 5. traverse
                 6. delete
                 7. Comment everything!!!
+                8. Printing tree with arrays
                     
 
 """
