@@ -141,6 +141,7 @@ class Array():
             raise IndexError("Array is not that big man.")          # if index out of range spit out Index Error
             
             
+
         
     # -----------------------------------------------------------------------------
     #                               THE MAGIC SECTION
