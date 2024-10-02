@@ -14,6 +14,7 @@ class HashTable():
         
         self.size = 2**16                   # hash table should store as many elements
         self.hashtable = [None]*self.size   # as there are possible hashes
+        self.amount = 0
         
         
     
@@ -45,6 +46,7 @@ class HashTable():
         element = str(element)
         index = self.hash_int(element)
         self.hashtable[index] = element
+        self.amount += 1
         print("Index of element: ",self.hashtable.index(element))
         
 
@@ -52,6 +54,7 @@ class HashTable():
     def delete(self, element):
         index = self.hash_int(element)
         self.hashtable[index] = None
+        self.amount -= 1
         
 
     
@@ -69,6 +72,8 @@ class HashTable():
     # -----------------------------------------------------------------------------
         
    
+    def __len__(self):
+        return self.amount
     
     
     # display hash table with print()-function
@@ -104,7 +109,7 @@ print(h)
 
 h.delete(34)
 print(h)
-    
+print(len(h))
     
     
     
