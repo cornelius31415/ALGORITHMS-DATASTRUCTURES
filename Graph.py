@@ -119,11 +119,9 @@ class Graph():
             for neighbor in neighbors:
                 if neighbor not in visited:
                     unvisited_neighbors[neighbor] = costs[neighbor]
-            if unvisited_neighbors:    
-                current_node = min(unvisited_neighbors,key=unvisited_neighbors.get)
-            else: 
-                break
-                                
+                
+            current_node = min(unvisited_neighbors,key=unvisited_neighbors.get)
+                            
         visited.append(end)
         return visited
         
@@ -207,60 +205,10 @@ class Graph():
                         
                     
                     mid_x, mid_y = (x1+x2)/2, (y1+y2)/2
-                    # ax.text(mid_x,mid_y,str(weight),ha='center',va='center',zorder=3,
-                    #         bbox=dict(facecolor='mintcream', edgecolor='black', 
-                    #                   boxstyle='round,pad=0.5'))    
+                    ax.text(mid_x,mid_y,str(weight),ha='center',va='center',zorder=3,
+                            bbox=dict(facecolor='mintcream', edgecolor='black', 
+                                      boxstyle='round,pad=0.5'))    
                     
-                     
                     
-
-        
-        
-        
-# -----------------------------------------------------------------------------
-#                               TRYING IT OUT
-# -----------------------------------------------------------------------------
-    
-
-# g = Graph()
-# g.add_vertex("A")
-# g.add_vertex("B")
-# g.add_vertex("C")
-# g.add_vertex("D")
-# g.add_edge("A", "B",100)
-# g.add_edge("A", "D",20)
-# g.add_edge("A", "C",50)
-# g.add_edge("B", "C",10)
-# g.add_edge("D", "C",125)
-# print(g.neighbors("D"))
-# print(g.dijkstra("D", "B"))
-# g.draw_graph()
-# g.draw_shortest_path("D", "B")
-
-
-g = Graph()
-g.add_vertex("A")
-g.add_vertex("B")
-g.add_vertex("C")
-g.add_vertex("D")
-g.add_vertex("E")
-g.add_vertex("F")
-g.add_vertex("G")
-g.add_vertex("H")
-g.add_edge("A", "B",100)
-g.add_edge("A", "D",20)
-g.add_edge("A", "C",10)
-g.add_edge("B", "C",10)
-g.add_edge("D", "C",125)
-g.add_edge("G", "A",50)
-g.add_edge("H", "C",55)
-g.add_edge("F", "D",10)
-g.add_edge("A", "E",10)
-
-print(g.neighbors("D"))
-print(g.dijkstra("D", "B"))
-g.draw_graph()
-g.draw_shortest_path("D", "B")
-
-
+                    
 
