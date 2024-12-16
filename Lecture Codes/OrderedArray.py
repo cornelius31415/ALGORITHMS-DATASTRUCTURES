@@ -73,15 +73,29 @@ class Array():
         self.amount += 1
 
         
-    def search(self,item):
-        
-    
-        # go through all elements one by one and compare
-        for i in range(self.size):
-            element = getattr(self, f"element{i}")      # get element with index i
-            if item == element.value:                   # compare
-                return element.index                    # if correct return index
-        
+    def search(self, item):
+        """
+        Binäre Suche nach einem Element im Array. Die Methode gibt den Index des gesuchten Elements zurück,
+        falls es gefunden wird. Andernfalls wird None zurückgegeben.
+        """
+        left = 0
+        right = self.amount - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+            mid_element = getattr(self, f"element{mid}").value
+
+            if mid_element == item:
+                return mid  # Element gefunden, gib den Index zurück
+
+            elif mid_element < item:
+                left = mid + 1  # Suche im rechten Teilbereich
+
+            else:
+                right = mid - 1  # Suche im linken Teilbereich
+
+        return None  # Element wurde nicht gefunden
+
 
     
     
